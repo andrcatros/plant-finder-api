@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-var indexRouter = require("./routes/index");
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
 
 // configure app with env variables
 require("dotenv").config();
@@ -36,6 +37,7 @@ db.once("open", () => {
   });
 
   app.use("/test", indexRouter);
+  app.use("/users", usersRouter);
 });
 
 module.exports = app;

@@ -1,0 +1,82 @@
+[
+  {
+    "_id": 1,
+    "email": "jo.smith@email.com",
+    "password": "password",
+    "firstName": "Jo",
+    "lastName": "Smith",
+    "about": "hello world",
+    "profileImg": "default",
+    "location": "Manchester"
+  },
+  {
+    "_id": 2,
+    "email": "zoe.jones@email.com",
+    "password": "password",
+    "firstName": "Zoe",
+    "lastName": "Jones",
+    "about": "Lorem ipsum dolor sit amet, vis ne quis vocibus salutatus. Velit audiam regione vim ad, id vel quodsi iriure. Vidit scripserit cotidieque quo ei. Nec ponderum mandamus praesent ex. Nonumy causae omittantur eos id. Simul laudem primis has ne.",
+    "profileImg": "default",
+    "location": "Manchester"
+  },
+  {
+    "_id": 3,
+    "email": "matt.smith@email.com",
+    "password": "password",
+    "firstName": "Matt",
+    "lastName": "Smith",
+    "about": "Lorem ipsum dolor sit amet, vis ne quis vocibus salutatus.",
+    "profileImg": "default",
+    "location": "Liverpool"
+  },
+  {
+    "_id": 4,
+    "email": "jane.lee@email.com",
+    "password": "password",
+    "firstName": "Jane",
+    "lastName": "Lee",
+    "about": "Omnes utinam pri te. Qui omnesque persequeris at, mei no nominati expetenda delicatissimi, saepe pertinax eu usu. Nonumes civibus omittantur ne qui, quando regione at duo. Sit noster nonumes moderatius cu.",
+    "profileImg": "default",
+    "location": "Preston"
+  },
+  {
+    "_id": 5,
+    "email": "george.knightley@email.com",
+    "password": "password",
+    "firstName": "George",
+    "lastName": "Knightley",
+    "about": "Lorem ipsum dolor sit amet, vis ne quis vocibus salutatus.",
+    "profileImg": "default",
+    "location": "Preston"
+  },
+  {
+    "_id": 6,
+    "email": "fred.wentworth@email.com",
+    "password": "password",
+    "firstName": "Fred",
+    "lastName": "Wentworth",
+    "about": "Lorem ipsum dolor sit amet, vis ne quis vocibus salutatus.",
+    "profileImg": "default",
+    "location": "Manchester"
+  },
+  {
+    "_id": 7,
+    "email": "emma.woodhouse@email.com",
+    "password": "password",
+    "firstName": "Emma",
+    "lastName": "Woodhouse",
+    "about": "Omnes utinam pri te. Qui omnesque persequeris at, mei no nominati expetenda delicatissimi, saepe pertinax eu usu. Nonumes civibus omittantur ne qui, quando regione at duo. Sit noster nonumes moderatius cu.",
+    "profileImg": "default",
+    "location": "Liverpool"
+  },
+  {
+    "_id": 8,
+    "email": "liz.bennet@email.com",
+    "password": "password",
+    "firstName": "Liz",
+    "lastName": "Bennet",
+    "about": "Omnes utinam pri te. Qui omnesque persequeris at, mei no nominati expetenda delicatissimi, saepe pertinax eu usu. Nonumes civibus omittantur ne qui, quando regione at duo. Sit noster nonumes moderatius cu.",
+    "profileImg": "default",
+    "location": "Preston"
+  }
+])
