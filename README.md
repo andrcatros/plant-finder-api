@@ -5,8 +5,8 @@ App created with the [Express application generator](https://expressjs.com/en/st
 To install this repo, clone the repo and install the dependencies:
 
 `git clone git@github.com:andrcatros/plant-finder-api.git`
-` cd plant-finder-api`
-` npm install`
+`cd plant-finder-api`
+`npm install`
 
 Then create an .env file and save a URL variable with the MongoDB url in it (e.g. `URL=mongodb://username:password@ds117960.mlab.com:17960/surreal-estate`).
 
