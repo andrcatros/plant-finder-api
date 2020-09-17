@@ -5,6 +5,8 @@ const cors = require("cors");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const plantsRouter = require("./routes/plants");
+const plantController = require("./controllers/plant");
 
 // configure app with env variables
 require("dotenv").config();
@@ -36,8 +38,8 @@ db.once("open", () => {
     console.log(`Plant Finder API is running on :${PORT}`);
   });
 
-  app.use("/test", indexRouter);
   app.use("/users", usersRouter);
+  app.use("/plants", plantsRouter);
 });
 
 module.exports = app;

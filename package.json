@@ -1,10 +1,13 @@
 {
-  "name": "t4p-api",
+  "name": "plant-finder-api",
+  "jest": {
+    "preset": "@shelf/jest-mongodb"
+  },
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "test": "mocha --recursive --exit --timeout 10000"
+    "test": "jest --setupFiles dotenv/config --verbose --bail"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -16,12 +19,16 @@
     "mongoose": "^5.10.5"
   },
   "devDependencies": {
+    "@shelf/jest-mongodb": "^1.2.3",
     "chai": "^4.2.0",
     "eslint": "^7.9.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-mocha": "^8.0.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.4.2",
+    "mocha": "^8.1.3",
     "prettier": "^2.1.1",
     "supertest": "^4.0.2"
   }

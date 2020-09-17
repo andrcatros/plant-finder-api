@@ -2,13 +2,16 @@ const express = require("express");
 const router = express.Router();
 
 const UserController = require("../controllers/user");
+const PlantController = require("../controllers/plant");
 
-/* GET users listing. */
 router
   .post("/", UserController.create)
   .get("/", UserController.query)
   .get("/:id", UserController.getById)
   .patch("/:id", UserController.update)
-  .delete("/:id", UserController.delete);
+  .delete("/:id", UserController.delete)
+  // routes to access a user's plants
+  .post("/:userId/plants", PlantController.create)
+  .get("/:userId/plants", PlantController.getUserPlants);
 
 module.exports = router;
