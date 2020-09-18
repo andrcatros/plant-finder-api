@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const plantsRouter = require("./routes/plants");
 const plantController = require("./controllers/plant");

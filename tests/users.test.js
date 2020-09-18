@@ -1,29 +1,39 @@
-const { expect } = require("jest");
+const { expect } = require("chai");
 const request = require("supertest");
+const express = require("express");
+const bodyParser = require("body-parser");
+
 const User = require("../models/user");
+const usersRouter = require("../routes/users");
+
+// initialise app with express
+const app = express();
+const jsonParser = bodyParser.json();
+app.use(jsonParser);
+app.use("/users", usersRouter);
 
 const mongoose = require("mongoose");
 
-describe("insert", () => {
-  let connection;
-  let db;
+const url = `${process.env.URL}`;
 
-  beforeAll(async () => {
-    connection = await mongoose.connect(process.env.TEST_URL, {
+describe("MongoDB tests", () => {
+  let connection;
+
+  before(async () => {
+    // initialise mongodb test database
+    connection = await mongoose.connect(url, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    db = await mongoose.connection;
   });
 
-  afterAll(async () => {
+  after(async () => {
     await User.deleteMany();
-    await connection.close();
-    await db.close();
+    await mongoose.connection.close();
   });
 
-  it("should insert a doc into collection", async () => {
-    const mockUser = {
+  it("Saves new user to the database", async () => {
+    const res = await request(app).post("/users").type("json").send({
       email: "jo.smith@email.com",
       password: "password",
       firstName: "Jo",
@@ -31,14 +41,13 @@ describe("insert", () => {
       about: "hello world",
       profileImg: "default",
       location: "Manchester",
-    };
+    });
 
-    await User.create(mockUser);
+    await expect(res.status).to.equal(201);
 
-    const insertedUser = await User.find({ firstName: "Jo" });
-    console.log(insertedUser[0]);
-    console.log(mockUser);
-
-    expect(insertedUser[0]).equal(mockUser);
+    await expect(res.body.email).to.equal("jo.smith@email.com");
+    await expect(res.body.firstName).to.equal("Jo");
+    await expect(res.body.lastName).to.equal("Smith");
+    await expect(res.body.profileImg).to.equal("default");
   });
 });
