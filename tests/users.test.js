@@ -17,37 +17,48 @@ const mongoose = require("mongoose");
 const url = `${process.env.URL}`;
 
 describe("MongoDB tests", () => {
-  let connection;
+  let db;
 
   before(async () => {
     // initialise mongodb test database
-    connection = await mongoose.connect(url, {
+    await mongoose.connect(url, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useFindAndModify: false,
     });
+
+    db = mongoose.connection;
   });
 
   after(async () => {
-    await User.deleteMany({});
     await mongoose.connection.close();
   });
 
-  it("Saves new user to the database", async () => {
-    const res = await request(app).post("/users").type("json").send({
-      email: "jo.smith@email.com",
-      password: "password",
-      firstName: "Jo",
-      lastName: "Smith",
-      about: "hello world",
-      profileImg: "default",
-      location: "Manchester",
+  describe("Tests without users in the database", () => {
+    after(async () => {
+      await User.deleteMany({});
     });
 
-    await expect(res.status).to.equal(201);
-    await expect(res.body.email).to.equal("jo.smith@email.com");
-    await expect(res.body.firstName).to.equal("Jo");
-    await expect(res.body.lastName).to.equal("Smith");
-    await expect(res.body.profileImg).to.equal("default");
+    it("Saves new user to the database", () => {
+      request(app)
+        .post("/users")
+        .send({
+          email: "jo.smith@email.com",
+          password: "password",
+          firstName: "Jo",
+          lastName: "Smith",
+          about: "hello world",
+          profileImg: "default",
+          location: "Manchester",
+        })
+        .then((res) => {
+          expect(res.status).to.equal(201);
+          expect(res.body.email).to.equal("jo.smith@email.com");
+          expect(res.body.firstName).to.equal("Jo");
+          expect(res.body.lastName).to.equal("Smith");
+          expect(res.body.profileImg).to.equal("default");
+        });
+    });
   });
 
   describe("tests with users in the database", () => {
@@ -87,12 +98,46 @@ describe("MongoDB tests", () => {
       });
     });
 
-    it("GETs all users", () => {
+    it("GETs all users", (done) => {
       request(app)
         .get("/users")
+        .then((res) => {
+          expect(res.status).to.equal(200);
+          expect(res.body.length).to.equal(3);
+          done();
+        });
+    });
+
+    it("GETs user with specific id", (done) => {
+      const expected = users[0];
+
+      request(app)
+        .get(`/users/${expected._id}`)
         .then(async (res) => {
-          await expect(res.status).to.equal(200);
-          await expect(res.body.length).to.equal(4); //???
+          expect(res.status).to.equal(200);
+          expect(res.body.email).to.equal(expected.email);
+          expect(res.body.about).to.equal(expected.about);
+          expect;
+
+          done();
+        });
+    });
+
+    it("PATCHes user with specific id", (done) => {
+      const user = users[0];
+
+      request(app)
+        .patch(`/users/${user._id}`)
+        .send({ firstName: "Updated", lastName: "World" })
+        .then((res) => {
+          expect(res.status).to.equal(200);
+
+          User.findById(user._id).then((updatedUser) => {
+            expect(updatedUser.firstName).to.equal("Updated");
+            expect(updatedUser.lastName).to.equal("World");
+
+            done();
+          });
         });
     });
   });

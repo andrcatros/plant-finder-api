@@ -14,17 +14,14 @@ const UserSchema = new Schema({
     type: String,
     required: true,
     set: (password) => {
-      console.log(`password set to: ${password}`);
-      console.log(`password hashed as '${bcrypt.hashSync(password, 10)}`);
-      return bcrypt.hashSync(password, 10);
+      const hashedPassword = bcrypt.hashSync(password, 10);
+      return hashedPassword;
     },
   },
 });
 
 UserSchema.methods.validatePassword = function validatePassword(password) {
-  console.log(`password submitted for login: ${password}`);
-  console.log(`password in database: ${this.password}`);
-  bcrypt.compareSync(password, this.password);
+  return bcrypt.compareSync(password, this.password);
 };
 
 const UserModel = mongoose.model("User", UserSchema);
