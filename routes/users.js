@@ -10,6 +10,8 @@ router
   .get("/:id", UserController.getById)
   .patch("/:id", UserController.update)
   .delete("/:id", UserController.delete)
+  //login route
+  .post("/login", UserController.login)
   // routes to access a user's plants
   .post("/:userId/plants", PlantController.create)
   .get("/:userId/plants", PlantController.getUserPlants);

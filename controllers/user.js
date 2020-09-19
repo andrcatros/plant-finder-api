@@ -35,3 +35,15 @@ exports.delete = (req, res) => {
     .then((removed) => res.status(200).json(removed))
     .catch((err) => res.status(400).json(err));
 };
+
+exports.login = (req, res) => {
+  UserModel.findOne({ email: req.body.email })
+    .then((user) => {
+      !user
+        ? res.status(401).json({ message: "Incorrect email address!" })
+        : user.validatePassword(req.body.password)
+        ? res.status(200).json(user)
+        : res.status(401).json({ message: "Incorrect email or password!" });
+    })
+    .catch((err) => console.log(err));
+};

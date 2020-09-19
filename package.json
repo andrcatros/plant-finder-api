@@ -20,6 +20,8 @@
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^1.2.3",
+    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "chai": "^4.2.0",
     "eslint": "^7.9.0",
     "eslint-config-airbnb-base": "^14.2.0",
