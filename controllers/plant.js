@@ -1,7 +1,7 @@
 const PlantModel = require("../models/plant");
 
 exports.create = (req, res) => {
-  const userId = req.params.id;
+  const userId = req.params.userId;
 
   PlantModel.create({ ...req.body, User: userId })
     .then((plant) => res.status(201).json(plant))

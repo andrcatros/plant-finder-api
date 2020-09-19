@@ -37,8 +37,8 @@ db.once("open", () => {
     console.log(`Plant Finder API is running on :${PORT}`);
   });
 
-  app.use("/users", usersRouter);
-  app.use("/plants", plantsRouter);
+  app.use("/api/v1/users", usersRouter);
+  app.use("/api/v1/plants", plantsRouter);
 });
 
 module.exports = app;
