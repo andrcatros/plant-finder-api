@@ -3,7 +3,11 @@ const UserModel = require("../models/user");
 exports.create = (req, res) => {
   UserModel.create(req.body)
     .then((user) => res.status(201).json(user))
-    .catch((err) => res.status(400).json(err));
+    .catch((err) => {
+      console.log(err);
+
+      res.status(400).json(err);
+    });
 };
 
 exports.getById = (req, res) => {

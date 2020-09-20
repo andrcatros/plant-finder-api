@@ -21,49 +21,48 @@ Go to `http://localhost:4000/test` and you should see this JSON file:
 
 You can also set the App to run on a port of your choosing by adding a PORT variable to your .env file.
 
-## ROUTES ##
+## ROUTES
 
 #User routes#
 
-* Return all users
-GET request to `/api/v1/users`
+- Return all users
+  GET request to `/api/v1/users`
 
-* Create new user record 
-POST request to `/api/v1/users`
+- Create new user record
+  POST request to `/api/v1/users`
 
-* Returns user with specific id
-GET request to `/api/v1/users/:id`
+- Returns user with specific id
+  GET request to `/api/v1/users/:id`
 
-* Updates user record with specific id
-PATCH request to `/api/v1/users/:id`
+- Updates user record with specific id
+  PATCH request to `/api/v1/users/:id`
 
-* Deletes user record with specific id
-DELETE request to `/api/v1/users/:id`
+- Deletes user record with specific id
+  DELETE request to `/api/v1/users/:id`
 
-* Checks login details 
-POST request (with email & password in req.body) to `/api/v1/login`
+- Checks login details
+  POST request (with email & password in req.body) to `/api/v1/users/login`
 
 #User and plant routes#
-* Create new plant record
-POST request to `/api/v1/:userId/plants` 
 
-* Return all plants belonging to specific user
-GET request to `/api/v1/:userId/plants`
+- Create new plant record
+  POST request to `/api/v1/:userId/plants`
+
+- Return all plants belonging to specific user
+  GET request to `/api/v1/:userId/plants`
 
 #Plant routes
-* Return all plants in the database
-GET request to `api/v1/plants` 
 
-* Return plant record with specific id
-GET request to `/api/v1/plantId`
+- Return all plants in the database
+  GET request to `api/v1/plants`
 
-* Update plant record with specific id
-PATCH request to `api/v1/:plantId`
+- Return plant record with specific id
+  GET request to `/api/v1/plantId`
 
-* Delete plant record with specific id
-DELETE request to `api/v1/:plantId`
+- Update plant record with specific id
+  PATCH request to `api/v1/:plantId`
 
+- Delete plant record with specific id
+  DELETE request to `api/v1/:plantId`
 
 **User and Plant schemas are in the models folder.**
-
-
