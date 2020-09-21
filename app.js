@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-var indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
+const plantsRouter = require("./routes/plants");
+const plantController = require("./controllers/plant");
 
 // configure app with env variables
 require("dotenv").config();
@@ -35,7 +37,8 @@ db.once("open", () => {
     console.log(`Plant Finder API is running on :${PORT}`);
   });
 
-  app.use("/test", indexRouter);
+  app.use("/api/v1/users", usersRouter);
+  app.use("/api/v1/plants", plantsRouter);
 });
 
 module.exports = app;
