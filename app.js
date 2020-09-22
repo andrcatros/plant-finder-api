@@ -3,9 +3,20 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+const firebase = require("firebase");
+
 const usersRouter = require("./routes/users");
 const plantsRouter = require("./routes/plants");
-const plantController = require("./controllers/plant");
+
+// initialise firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyBkyOe4868JrfIt7HbiHsW0s8h3Dfskras",
+  authDomain: "plant-finder-image-upload.firebaseapp.com",
+  databaseURL: "https://plant-finder-image-upload.firebaseio.com/",
+  storageBucket: "plant-finder-image-upload.appspot.com/",
+};
+
+firebase.initializeApp(firebaseConfig);
 
 // configure app with env variables
 require("dotenv").config();
