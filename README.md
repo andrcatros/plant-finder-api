@@ -23,7 +23,7 @@ You can also set the App to run on a port of your choosing by adding a PORT vari
 
 ## ROUTES
 
-#User routes#
+# User routes
 
 - Return all users
   GET request to `/api/v1/users`
@@ -41,9 +41,9 @@ You can also set the App to run on a port of your choosing by adding a PORT vari
   DELETE request to `/api/v1/users/:id`
 
 - Checks login details
-  POST request (with email & password in req.body) to `/api/v1/users/login`
+  POST request (with email & password in req.body) to `/api/v1/login`
 
-#User and plant routes#
+# User and plant routes
 
 - Create new plant record
   POST request to `/api/v1/:userId/plants`
@@ -51,7 +51,7 @@ You can also set the App to run on a port of your choosing by adding a PORT vari
 - Return all plants belonging to specific user
   GET request to `/api/v1/:userId/plants`
 
-#Plant routes
+# Plant routes
 
 - Return all plants in the database
   GET request to `api/v1/plants`
