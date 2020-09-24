@@ -1,9 +1,32 @@
+const { Storage } = require("@google-cloud/storage");
+
 const PlantModel = require("../models/plant");
+
+// initialise google cloud storage
+const storage = new Storage();
+
+const bucket = storage.bucket("gs://plant-finder-image-upload.appspot.com/");
 
 exports.create = (req, res) => {
   const userId = req.params.userId;
+  let img;
 
-  PlantModel.create({ ...req.body, User: userId })
+  if (!req.file) {
+    img = "default";
+  } else {
+    const blob = bucket.file(req.file.originalname);
+    const blobStream = blob.createWriteStream();
+
+    blobStream.on("error", (err) => {
+      next(err);
+    });
+
+    blobStream.end(req.file.buffer);
+
+    img = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
+  }
+
+  PlantModel.create({ ...req.body, img: img, User: userId })
     .then((plant) => res.status(201).json(plant))
     .catch((err) => res.status(400).json(err));
 };

@@ -5,7 +5,6 @@ const cors = require("cors");
 
 const usersRouter = require("./routes/users");
 const plantsRouter = require("./routes/plants");
-const plantController = require("./controllers/plant");
 
 // configure app with env variables
 require("dotenv").config();
