@@ -21,6 +21,8 @@ Go to `http://localhost:4000/test` and you should see this JSON file:
 
 You can also set the App to run on a port of your choosing by adding a PORT variable to your .env file.
 
+#### This API is deployed [here](https://plant-finder-api.herokuapp.com/) on Heroku.
+
 ## ROUTES
 
 # User routes
