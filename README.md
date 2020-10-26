@@ -34,10 +34,6 @@ Now that everything is set up, run `npm start` from the repo directory and your 
 `You have connected to the database.`
 `Plant Finder API is running on :4000`
 
-Go to `http://localhost:4000/test` and you should see this JSON file:
-
-`{"message":"Plant Finder API is up and running!"}`
-
 You can also set the App to run on a port of your choosing by adding a PORT variable to your .env file.
 
 #### This API is deployed [here](https://plant-finder-api.herokuapp.com/) on Heroku.
